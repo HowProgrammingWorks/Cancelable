@@ -4,12 +4,12 @@ class Cancelable extends Promise {
   constructor(executor) {
     super((resolve, reject) => {
       executor(val => {
-        if (this.canceled) return;
+        if (this.canceled) {
+          reject(new Error('Cancelled'));
+          return;
+        }
         resolve(val);
-      }, err => {
-        if (this.canceled) return;
-        reject(err);
-      });
+      }, reject);
     });
     this.canceled = false;
   }
