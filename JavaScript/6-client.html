@@ -21,7 +21,9 @@ class Cancelable extends Promise {
       executor(
         wrapCancel(resolve),
         wrapCancel(reject),
-        callback => onCancel = callback
+        callback => {
+          onCancel = callback;
+        }
       );
     });
     this.canceled = false;
