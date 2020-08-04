@@ -15,8 +15,10 @@ const fn = par => {
 };
 
 const f = cancelable(fn);
+
 setTimeout(() => {
   f('first');
   f.cancel();
 }, 10);
+
 setTimeout(f, 20, 'second');
