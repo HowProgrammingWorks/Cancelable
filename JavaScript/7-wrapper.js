@@ -1,10 +1,10 @@
 'use strict';
 
-const cancelable = executor => {
+const cancelable = (executor) => {
   let canceled = false;
 
   const promise = new Promise((resolve, reject) => {
-    executor(val => {
+    executor((val) => {
       if (canceled) {
         reject(new Error('Cancelled'));
         return;
@@ -23,7 +23,7 @@ const cancelable = executor => {
 // Usage
 
 {
-  const promise = cancelable(resolve => {
+  const promise = cancelable((resolve) => {
     setTimeout(() => {
       resolve('first');
     }, 10);
@@ -34,7 +34,7 @@ const cancelable = executor => {
 }
 
 {
-  const promise = cancelable(resolve => {
+  const promise = cancelable((resolve) => {
     setTimeout(() => {
       resolve('second');
     }, 10);

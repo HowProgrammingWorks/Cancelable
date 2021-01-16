@@ -3,7 +3,7 @@
 class Cancelable extends Promise {
   constructor(executor) {
     super((resolve, reject) => {
-      executor(val => {
+      executor((val) => {
         if (this.canceled) {
           reject(new Error('Cancelled'));
           return;
@@ -22,7 +22,7 @@ class Cancelable extends Promise {
 // Usage
 
 {
-  const promise = new Cancelable(resolve => {
+  const promise = new Cancelable((resolve) => {
     setTimeout(() => {
       resolve('first');
     }, 10);
@@ -33,7 +33,7 @@ class Cancelable extends Promise {
 }
 
 {
-  const promise = new Cancelable(resolve => {
+  const promise = new Cancelable((resolve) => {
     setTimeout(() => {
       resolve('second');
     }, 10);

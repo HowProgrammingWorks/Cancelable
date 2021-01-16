@@ -1,8 +1,8 @@
 'use strict';
 
-const cancelable = promise => {
+const cancelable = (promise) => {
   let cancelled = false;
-  const next = promise.then(val => {
+  const next = promise.then((val) => {
     if (cancelled) return Promise.reject(new Error('Canceled'));
     return val;
   });
@@ -15,7 +15,7 @@ const cancelable = promise => {
 // Usage
 
 {
-  const promise = cancelable(new Promise(resolve => {
+  const promise = cancelable(new Promise((resolve) => {
     setTimeout(() => {
       resolve('first');
     }, 10);
@@ -26,7 +26,7 @@ const cancelable = promise => {
 }
 
 {
-  const promise = cancelable(new Promise(resolve => {
+  const promise = cancelable(new Promise((resolve) => {
     setTimeout(() => {
       resolve('second');
     }, 10);
