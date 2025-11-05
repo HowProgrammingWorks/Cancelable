@@ -15,22 +15,26 @@ const cancelable = (promise) => {
 // Usage
 
 {
-  const promise = cancelable(new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('first');
-    }, 10);
-  }));
+  const promise = cancelable(
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('first');
+      }, 10);
+    }),
+  );
 
   promise.then(console.log).catch(console.log);
   console.dir({ promise });
 }
 
 {
-  const promise = cancelable(new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('second');
-    }, 10);
-  }));
+  const promise = cancelable(
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('second');
+      }, 10);
+    }),
+  );
 
   promise.cancel();
   promise.then(console.log).catch(console.log);

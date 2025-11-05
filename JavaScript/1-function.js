@@ -2,7 +2,9 @@
 
 const cancelable = (fn) => {
   const wrapper = (...args) => (fn ? fn(...args) : null);
-  wrapper.cancel = () => fn = null;
+  wrapper.cancel = () => {
+    fn = null;
+  };
   return wrapper;
 };
 
